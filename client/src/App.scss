@@ -1,0 +1,173 @@
+$primaryColor: #23272a;
+$show-home-image: true;
+$home-image: url('./assets/nasa1.jpg');
+$background-opacity: .8;
+$main-text-color: #99aab5;
+$secondary-color:#2c2f33;
+$tertiary-color: #ffffff;
+$quartile-color: #7289da;
+
+// @mixin background {
+//     @if $show-home-image {
+//         &#bg-img {
+//             background: $home-image;
+//             background-attachment: fixed;
+//             background-size: cover;
+//         }
+
+//         &:after {
+//             content: '';
+//             position: absolute;
+//             top: 0;
+//             right: 0;
+//             width: 100%;
+//             height: 100%;
+//             z-index: -1;
+//             background: rgba($primaryColor, $background-opacity);
+//         }
+//     }
+
+// }
+
+html {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+
+}
+
+.App {
+
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    // @include background;
+    background: $secondary-color;
+    color: $tertiary-color;
+    height: 100%;
+    margin: 0;
+    line-height: 1.5;
+
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 400;
+    padding-left: 10rem;
+
+
+    &.main-name {
+        font-size: 5rem;
+    }
+
+    &.main-description {
+        padding-left: 11rem;
+    }
+}
+
+
+a {
+    color: $main-text-color;
+    text-decoration: none;
+
+
+    &.id {
+        padding: 1rem;
+    }
+}
+
+header {
+    background-color: $secondary-color;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+
+
+
+    nav {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 .1rem .2rem .01rem rgba(0, 0, 0, .8);
+
+        ul {
+            padding: 0;
+            margin: 0;
+            font-size: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            li {
+
+                height: 100%;
+                list-style-type: none;
+                flex: 0 0 25%;
+                text-align: center;
+
+                a {
+                    display: block;
+                    width: 100%;
+                    padding: 1rem;
+
+                    &:hover {
+                        color: $tertiary-color;
+                    }
+                }
+
+                &:hover {
+                    height: 100%;
+                    background-color: $quartile-color;
+                    color: $tertiary-color;
+
+                }
+
+
+            }
+        }
+
+    }
+
+
+}
+
+main {
+    padding: 8rem 5rem;
+    background: $secondary-color;
+
+    div {
+        &.icons {
+            padding-left: 10rem;
+        }
+    }
+
+    a {
+        &:hover {
+            color: $quartile-color;
+        }
+    }
+
+}
+
+.nameCard {
+    margin: auto;
+    border-radius: 2rem;
+    background: $primaryColor;
+    width: 75%;
+    padding: 8rem 5rem;
+    border: .05rem $quartile-color solid;
+}
+
+.cardHolder {
+    display: grid;
+    padding: 3rem;
+    grid-template-columns: 30vw 30vw 30vw;
+    grid-auto-rows: 30vw;
+    grid-column-gap: 0;
+}

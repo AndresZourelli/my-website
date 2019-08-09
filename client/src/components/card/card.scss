@@ -1,0 +1,26 @@
+$main-text-color: #99aab5;
+$secondary-color:#2c2f33;
+$tertiary-color: #ffffff;
+$quartile-color: #7289da;
+$primaryColor: #23272a;
+$item-size: 100%;
+
+.CardBody {
+    padding: 3rem;
+    background: $primaryColor;
+    width: $item-size;
+    height: $item-size;
+    transition: all 1s;
+    justify-self: center;
+
+
+    h2 {
+        padding: 0;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 .1rem 1rem .3rem rgba(0, 0, 0, .5);
+
+    }
+}
