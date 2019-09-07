@@ -34,7 +34,9 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
+    color: rgba($tertiary-color, .8);
     font-weight: 400;
     padding-left: 10rem;
 
@@ -119,6 +121,8 @@ main {
     padding: 8rem 5rem;
     background: $secondary-color;
 
+
+
     div {
         &.icons {
             padding-left: 10rem;
@@ -138,8 +142,20 @@ main {
     border-radius: 2rem;
     background: $primaryColor;
     width: 75%;
-    padding: 8rem 5rem;
+    padding: 6rem 4rem;
     border: 1px $quartile-color solid;
+
+    h1 {
+        padding: 0;
+        padding-left: 2rem;
+    }
+
+    h3,
+    h4 {
+        font-weight: 400;
+        padding-left: 6rem;
+        line-height: 2.5rem;
+    }
 }
 
 .cardHolder {
