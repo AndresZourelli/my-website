@@ -6,47 +6,52 @@ $primaryColor: #23272a;
 $item-size: 100%;
 
 .CardBody {
-	overflow: hidden;
-	padding: 3rem;
-	background: $primaryColor;
-	width: $item-size;
-	height: $item-size;
-	transition: all 1s;
-	justify-self: center;
-	position: relative;
-	z-index: 1;
+    overflow: hidden;
+    padding: 3rem;
+    background: $primaryColor;
+    width: $item-size;
+    height: $item-size;
+    transition: all 1s;
+    justify-self: center;
+    position: relative;
+    z-index: 1;
 
-	h2 {
-		padding: 0;
-	}
+    h2 {
+        padding: 0;
+    }
 
-	.card-modal {
-		padding: 2rem;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		bottom: 300px;
-		left: 0;
-		transition: all 1s;
-		&:active {
-			z-index: 1000;
-		}
-	}
+    .card-modal {
+        padding: 2rem;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        bottom: 300px;
+        left: 0;
+        transition: all 1s;
 
-	&:hover {
-		z-index: 200;
-		transform: scale(1.05);
-		box-shadow: 0 .1rem 1rem .3rem rgba(0, 0, 0, .5);
+        &:active {
+            z-index: 1000;
+        }
+    }
 
-		.card-modal {
-			transform: translateY(300px);
-			opacity: 1;
-			width: 100%;
-			height: 100%;
-		}
-		&:hover:after {
-			z-index: 1000;
-		}
-	}
+    &:hover {
+        z-index: 200;
+        transform: scale(1.05);
+        box-shadow: 0 .1rem 1rem .3rem rgba(0, 0, 0, .5);
+
+        a {
+            &:hover {
+                color: $quartile-color;
+            }
+
+        }
+
+        .card-modal {
+            transform: translateY(300px);
+            opacity: 1;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
