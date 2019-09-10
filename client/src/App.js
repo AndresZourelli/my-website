@@ -28,7 +28,7 @@ function App() {
 			</header>
 			<main>
 				<h1 className="main-name">Andres Zourelli</h1>
-				<h2 className="main-description">Aeronautical and Mechanical Engineer, Web Developer, & Programer</h2>
+				<h2 className="main-description">Aeronautical and Mechanical Engineer, Web Developer, & Programmer</h2>
 				<div className="icons">
 					<a href="/" className="id">
 						<FontAwesomeIcon icon={faLinkedin} size="2x" />
