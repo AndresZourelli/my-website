@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const auth = require('../auth').auth;
 const jwtNew = require('../auth').newToken;
-// const pool = require('../../Config/DBqueries');
+const pool = require('../../Config/DBconnection');
 // const emailSend = require('../../Email/email');
 const hashPassword = require('../auth').hashPassword;
 const comparePassword = require('../auth').comparePassword;
