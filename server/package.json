@@ -5,8 +5,8 @@
   "author": "Andres <azourelli@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "client": "cd client && yarn start",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
