@@ -1,0 +1,14 @@
+.resume-container {
+	margin: 5rem 3rem;
+	display: flex;
+	.left-resume {
+		height: 10vh;
+		background: red;
+		flex: 0 0 30%;
+	}
+	.right-resume {
+		height: 10vh;
+		background: blue;
+		flex: 0 0 70%;
+	}
+}
