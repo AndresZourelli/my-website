@@ -1,0 +1,34 @@
+$primaryColor: #23272a;
+$main-text-color: #99aab5;
+$secondary-color: #2c2f33;
+$tertiary-color: #ffffff;
+$quartile-color: #7289da;
+
+.resume-container {
+	.experience {
+		h2,
+		h1,
+		h4 {
+			color: rgba($tertiary-color, 0.8);
+			margin: 0;
+			padding: 0;
+		}
+
+		p {
+			color: rgba($tertiary-color, 0.8);
+		}
+		.experience-job {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			margin-bottom: 3rem;
+
+			.experience-left {
+				flex: 0 0 40%;
+			}
+			.experience-right {
+				flex: 0 0 60%;
+			}
+		}
+	}
+}
