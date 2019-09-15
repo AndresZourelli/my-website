@@ -1,6 +1,7 @@
 import React from 'react';
 import './Resume.scss';
 import Experience from '../Utilities/Experience/Experience';
+import Education from '../Utilities/Education/Education';
 
 const Resume = () => {
 	return (
@@ -13,28 +14,16 @@ const Resume = () => {
 					<div className="education-title">
 						<h1>Education</h1>
 					</div>
-					<div className="education">
-						<div className="education-school">
-							<div className="education-school-left">
-								<h4>Aug. 2014 &ndash; May 2018</h4>
-							</div>
-							<div className="education-school-right">
-								<h2>Rensselaer Polytechnic Institute</h2>
-								<h4>B.S. Aeronautical and Mechanical Engineering</h4>
-							</div>
-						</div>
-					</div>
-					<div className="education">
-						<div className="education-school">
-							<div className="education-school-left">
-								<h4>Sept. 2019 &ndash; Current</h4>
-							</div>
-							<div className="education-school-right">
-								<h2>Oregon State University</h2>
-								<h4>B.S. Computer Science</h4>
-							</div>
-						</div>
-					</div>
+					<Education
+						edu_dates="Aug. 2014 &ndash; May 2018"
+						name="Rensselaer Polytechnic Institute"
+						degree_type="B.S. Aeronautical and Mechanical Engineering"
+					/>
+					<Education
+						edu_dates="Sept. 2019 &ndash; Current"
+						name="Oregon State University"
+						degree_type="B.S. Computer Science"
+					/>
 				</div>
 				<div className="resume-section-divide-container" />
 
