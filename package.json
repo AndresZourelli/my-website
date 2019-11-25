@@ -1,10 +1,10 @@
 {
-  "name": "my-website",
-  "version": "0.1.0",
-  "private": true,
-
-  "scripts": {
-    "client": "cd client && yarn start",
-    "server": "cd server && yarn dev"
-  }
+	"name": "my-website",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"client": "cd client && yarn start",
+		"server": "cd server && yarn dev"
+	},
+	"devDependencies": {}
 }

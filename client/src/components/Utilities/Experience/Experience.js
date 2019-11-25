@@ -1,7 +1,7 @@
 import React from 'react';
 import './Experience.scss';
 
-const Experience = ({ title, experience_date, company, description }) => {
+const Experience = ({ title, experience_date, company, description, children }) => {
 	return (
 		<div className="experience">
 			<div className="experience-job">
@@ -12,6 +12,7 @@ const Experience = ({ title, experience_date, company, description }) => {
 					<h2>{company}</h2>
 					<h4>{title}</h4>
 					<p>{description}</p>
+					{children}
 				</div>
 			</div>
 		</div>
