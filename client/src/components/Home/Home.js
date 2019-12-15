@@ -11,10 +11,15 @@ export class Home extends Component {
 		return (
 			<div className="App">
 				<main>
-					<h1 className="main-name">Andres Zourelli</h1>
-					<h2 className="main-description">
-						Aeronautical and Mechanical Engineer, Web Developer, & Programmer
-					</h2>
+					<h1 className="main-name">Hello! My name is Andres.</h1>
+					<h3 className="main-description">
+						I am a Systems Engineer for the Optimized Maintenance program at Boeing where I help airline
+						customers analyze their maintenance programs effectiveness and recommend changes to them.
+					</h3>
+					<h3 className="main-description">
+						I am also working on earning a degree in Computer Science from Oregon State University.
+					</h3>
+					<h3 className="main-description">Click below to see my recent projects and contact information.</h3>
 					<div className="icons">
 						<a href="/" className="id">
 							<FontAwesomeIcon icon={faLinkedin} size="2x" />
