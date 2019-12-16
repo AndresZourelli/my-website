@@ -35,19 +35,34 @@ h3,
 h4 {
 	color: rgba($tertiary-color, .8);
 	font-weight: 400;
-	padding-left: 8rem;
-	line-height: 2.5rem;
+	line-height: 1.25rem;
 	word-spacing: .15rem;
 
 	&.main-name {
 		font-size: 3rem;
 		padding-bottom: 3rem;
+		padding-left: 2rem;
 	}
 
 	&.main-description {
+		line-height: 2rem;
 		font-size: 1.5rem;
-		padding-left: 8rem;
+		padding-left: 5rem;
 		padding-bottom: 1rem;
+	}
+}
+
+.school {
+	color: $quartile-color;
+
+	&:hover {
+		color: rgba($color: #88bcff, $alpha: 1.5);
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	a:visited {
+		text-decoration: none;
+		color: inherit;
 	}
 }
 
@@ -108,13 +123,13 @@ header {
 }
 
 main {
-	padding: 8rem 5rem;
+	padding: 5rem 5rem 2rem 5rem;
 	background: $secondary-color;
 
 	div {
 		&.icons {
-			padding-top: 3rem;
-			padding-left: 7rem;
+			padding-top: .5rem;
+			padding-left: 4rem;
 		}
 	}
 

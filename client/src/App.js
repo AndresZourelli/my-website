@@ -7,7 +7,6 @@ import Navigation from './components/Navigation/Navigation';
 function App() {
 	return (
 		<div>
-			<Navigation />
 			<Route path="/" component={Home} />>
 		</div>
 	);
