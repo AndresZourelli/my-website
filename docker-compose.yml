@@ -1,20 +1,20 @@
 version: "3"
 services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: nginx-proxy
-    ports:
-      - "80:80"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-  client:
-    container_name: my-website
-    restart: always
-    build: ./client
-    ports:
-      - 3000:3000
-    environment:
-      VIRTUAL_HOST: http://192.168.99.100/client
+  # nginx-proxy:
+  #   image: jwilder/nginx-proxy
+  #   container_name: nginx-proxy
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  # client:
+  #   container_name: my-website
+  #   restart: always
+  #   build: ./client
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     VIRTUAL_HOST: http://192.168.99.100/client
 
   server:
     container_name: my-server
@@ -25,16 +25,27 @@ services:
     command: yarn start
     env_file:
       - ./server/.env
-    environment:
-      VIRTUAL_HOST: backend/0.0.0.0
 
   postgres:
     container_name: postgres
     image: postgres
     ports:
       - "27017:27017"
+    env_file:
+      - ./server/.env
 
-networks:
-  default:
-    external:
-      name: nginx-proxy
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "5555:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: unless-stopped
+# networks:
+#   default:
+#     external:
+#       name: nginx-proxy
+
