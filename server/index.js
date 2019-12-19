@@ -6,6 +6,7 @@ const path = require('path');
 const db = require('./Config/DBconnection');
 require('dotenv').config();
 
+db.initialize();
 //Setup
 //Enables CORS
 app.use(cors());
@@ -18,7 +19,15 @@ app.use(bodyParser.json());
 //exposes a directory or a file to a particular URL so it's contents can be publicly accessed
 app.use(express.static(path.join(__dirname, 'public')));
 
-//All Routes
-app.use(require('./routes'));
 const port = 5000;
+
+//get all projects
+app.get('/api/projects', db.getProjects);
+//create new project
+app.post('/api/projects', db.addProject);
+//update existing project
+app.put('/api/projects/:id', db.updateProject);
+//delete project
+app.delete('/api/projects/:id', db.deleteProject);
+
 app.listen(port, () => console.log(`Server started on port ${port}`));
