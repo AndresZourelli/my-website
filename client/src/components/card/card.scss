@@ -52,14 +52,6 @@ $item-size: 100%;
 			color: rgba($quartile-color, 1);
 			margin-right: .5rem;
 			background-color: transparent;
-			&.live {
-				color: #77dd77;
-				border: solid #77dd77 2px;
-				&:hover {
-					color: #bcdbbc;
-					border: solid #bcdbbc 2px;
-				}
-			}
 			&.learn-more {
 				color: $main-text-color;
 				border: solid $main-text-color 2px;
@@ -68,6 +60,26 @@ $item-size: 100%;
 					border: solid #bed5e4 2px;
 				}
 			}
+		}
+
+		a {
+			border: solid $quartile-color 2px;
+			border-radius: 5px;
+			font-size: 1.25rem;
+			color: rgba($quartile-color, 1);
+			margin-right: .5rem;
+			background-color: transparent;
+			padding: 1px 6px;
+			text-decoration: none;
+			&.live {
+				color: #77dd77;
+				border: solid #77dd77 2px;
+				&:hover {
+					color: #bcdbbc;
+					border: solid #bcdbbc 2px;
+				}
+			}
+
 			&:hover {
 				color: #b0c1ff;
 				border: solid #b0c1ff 2px;
