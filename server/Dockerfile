@@ -14,4 +14,4 @@ RUN yarn install
 COPY . /srv/app/admin-server
 
 
-CMD yarn start
+CMD yarn dev
