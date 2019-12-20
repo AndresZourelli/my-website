@@ -30,4 +30,7 @@ app.put('/api/projects/:id', db.updateProject);
 //delete project
 app.delete('/api/projects/:id', db.deleteProject);
 
+app.get('/test', () => console.log('working'));
+// app.get('/', () => db.getProjects);
+
 app.listen(port, () => console.log(`Server started on port ${port}`));
