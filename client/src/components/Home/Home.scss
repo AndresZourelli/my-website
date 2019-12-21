@@ -60,6 +60,7 @@ h4 {
 		text-decoration: underline;
 		cursor: pointer;
 	}
+
 	a:visited {
 		text-decoration: none;
 		color: inherit;
@@ -72,6 +73,10 @@ a {
 
 	&.id {
 		padding: 1rem;
+	}
+
+	&:visited {
+		color: inherit;
 	}
 }
 
