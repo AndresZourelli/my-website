@@ -8,7 +8,7 @@ const Projects = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const list = await axios.get('http://localhost:5000/api/projects');
+			const list = await axios.get('/api/projects');
 			setData({ data: list.data });
 		};
 		fetchData();
