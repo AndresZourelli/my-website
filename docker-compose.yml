@@ -1,14 +1,6 @@
 version: "3"
 services:
-  # nginx-proxy:
-  #   image: jwilder/nginx-proxy
-  #   container_name: nginx-proxy
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - /var/run/docker.sock:/tmp/docker.sock:ro
   client:
-    container_name: my-website
     restart: always
     build: ./client
     ports:
@@ -22,7 +14,6 @@ services:
       - api
 
   api:
-    container_name: my-server
     build: ./server
     restart: always
     depends_on:
@@ -34,7 +25,6 @@ services:
       - ./server/.env
 
   postgres:
-    container_name: postgres
     image: postgres
     ports:
       - "27017:27017"
@@ -59,8 +49,6 @@ services:
       context: ./nginx
     ports:
       - "3050:80"
-# networks:
-#   default:
-#     external:
-#       name: nginx-proxy
-
+    depends_on:
+      - client
+      - api
