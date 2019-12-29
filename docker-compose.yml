@@ -24,7 +24,9 @@ services:
       - postgres
     ports:
       - 5000:5000
-    command: yarn start
+    volumes:
+      - /app/node_modules
+      - ./server:/app
     env_file:
       - ./server/.env
 

@@ -1,15 +1,14 @@
 
 FROM node:12.10-alpine
 
-RUN apk add g++ make python
-WORKDIR /app/server
+
+WORKDIR /app
 
 COPY package.json .
-COPY yarn.lock .
 
-RUN npm install -g node-pre-gyp
-RUN yarn install 
+RUN npm install 
+
 
 COPY . .
 
-CMD yarn dev
+CMD npm run dev
