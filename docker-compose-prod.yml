@@ -63,6 +63,7 @@ services:
     volumes:
       - ./var/www/certbot/data:/usr/share/nginx/html/letsencrypt
       - ./var/www/certbot/conf:/etc/nginx/ssl
+      - ./var/www/certbot/conf/dhparam:/etc/nginx/dhparam
     depends_on:
       - client
       - api
