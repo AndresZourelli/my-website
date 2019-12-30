@@ -66,13 +66,12 @@ services:
     depends_on:
       - client
       - api
-
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - ./data/certbot-etc:/etc/letsencrypt
-      - ./data/certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - nginx
-    command: certonly --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --staging -d andreszourelli.me -d www.andreszourelli.me
+  # certbot:
+  #   image: certbot/certbot
+  #   container_name: certbot
+  #   volumes:
+  #     - ./data/certbot-etc:/etc/letsencrypt
+  #     - ./data/certbot-var:/var/lib/letsencrypt
+  #   depends_on:
+  #     - nginx
+  #   command: certonly --webroot --webroot-path=/var/www/html --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --staging -d andreszourelli.me -d www.andreszourelli.me
