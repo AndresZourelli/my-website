@@ -1,0 +1,64 @@
+version: "3"
+services:
+  client:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    ports:
+      - 3000:3000
+    volumes:
+      - /app
+    depends_on:
+      - api
+    links:
+      - api
+
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 5000:5000
+    volumes:
+      - /app
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_DB
+      - POSTGRES_PASSWORD
+
+  postgres:
+    image: postgres
+    ports:
+      - "27017:5432"
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_DB
+      - POSTGRES_PASSWORD
+    volumes:
+      - /var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "5555:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL
+      - PGADMIN_DEFAULT_PASSWORD
+    restart: unless-stopped
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - client
+      - api
