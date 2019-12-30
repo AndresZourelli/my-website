@@ -61,16 +61,19 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+      - ./data/certbot-etc:/etc/letsencrypt
+      - ./data/certbot-var:/var/lib/letsencrypt
     depends_on:
       - client
       - api
 
   certbot:
     image: certbot/certbot
+    container_name: certbot
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+      - ./data/certbot-etc:/etc/letsencrypt
+      - ./data/certbot-var:/var/lib/letsencrypt
+      - ./data/web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --staging -d andreszourelli.me -d www.andreszourelli.me
