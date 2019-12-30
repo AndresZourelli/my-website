@@ -75,4 +75,4 @@ services:
       - ./data/certbot-var:/var/lib/letsencrypt
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --staging -d andreszourelli.me -d www.andreszourelli.me
+    command: certonly --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --staging -d andreszourelli.me -d www.andreszourelli.me
