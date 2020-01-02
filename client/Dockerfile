@@ -1,13 +1,11 @@
-FROM node:12.10-alpine
+FROM node:12.10-alpine as builder
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-RUN mkdir -p /srv/app/admin-client
-WORKDIR /srv/app/admin-client
-
-COPY package.json /srv/app/admin-client
-COPY yarn.lock /srv/app/admin-client
-
-RUN yarn install
-
-COPY . /srv/app/admin-client
-
-CMD yarn start
+FROM nginx
+EXPOSE 3000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html

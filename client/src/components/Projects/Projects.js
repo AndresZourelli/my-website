@@ -8,13 +8,12 @@ const Projects = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const list = await axios.get('http://192.168.99.100:5000/api/projects');
+			const list = await axios.get('/api/projects');
 			setData({ data: list.data });
 		};
 		fetchData();
 	}, []);
 
-	//let component = list && list.map((project) => <Card />);
 	return (
 		<div className="projects-container">
 			<h1>Projects</h1>

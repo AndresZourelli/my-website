@@ -1,43 +1,39 @@
 version: "3"
 services:
-  # nginx-proxy:
-  #   image: jwilder/nginx-proxy
-  #   container_name: nginx-proxy
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - /var/run/docker.sock:/tmp/docker.sock:ro
   client:
-    container_name: my-website
     restart: always
-    build: ./client
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
     ports:
       - 3000:3000
     volumes:
-      - "./client:/srv/app/admin-client"
-      - "/srv/app/admin-client/node_modules"
+      - /app/node_modules
+      - ./client:/app
     depends_on:
-      - server
+      - api
     links:
-      - server
+      - api
 
-  server:
-    container_name: my-server
-    build: ./server
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
     restart: always
     depends_on:
       - postgres
     ports:
       - 5000:5000
-    command: yarn start
+    volumes:
+      - /app/node_modules
+      - ./server:/app
     env_file:
       - ./server/.env
 
   postgres:
-    container_name: postgres
     image: postgres
     ports:
-      - "27017:27017"
+      - "27017:5432"
     env_file:
       - ./server/.env
 
@@ -51,8 +47,14 @@ services:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: admin
     restart: unless-stopped
-# networks:
-#   default:
-#     external:
-#       name: nginx-proxy
 
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3050:80"
+    depends_on:
+      - client
+      - api

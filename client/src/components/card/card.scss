@@ -45,6 +45,7 @@ $item-size: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
 		button {
 			border: solid $quartile-color 2px;
 			border-radius: 5px;
@@ -55,6 +56,7 @@ $item-size: 100%;
 			&.learn-more {
 				color: $main-text-color;
 				border: solid $main-text-color 2px;
+
 				&:hover {
 					color: #bed5e4;
 					border: solid #bed5e4 2px;
@@ -69,20 +71,23 @@ $item-size: 100%;
 			color: rgba($quartile-color, 1);
 			margin-right: .5rem;
 			background-color: transparent;
-			padding: 1px 6px;
-			text-decoration: none;
+			padding: 2px 7px;
+
 			&.live {
 				color: #77dd77;
 				border: solid #77dd77 2px;
+
 				&:hover {
 					color: #bcdbbc;
 					border: solid #bcdbbc 2px;
+					text-decoration: none;
 				}
 			}
 
 			&:hover {
 				color: #b0c1ff;
 				border: solid #b0c1ff 2px;
+				text-decoration: none;
 			}
 		}
 	}

@@ -5,14 +5,19 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 const Card = ({ website, title, github, description, learnmore, company_image }) => {
 	let optionalButtonLive = (
-		<a className="live" href={website || '/'}>
+		<a className="live" href={website}>
 			See it Live
 		</a>
 	);
 	let optionalButtonGithub = (
-		<a href={github || '/'}>
+		<a href={github}>
 			View on <FontAwesomeIcon icon={faGithub} size="1x" />
 		</a>
+	);
+	let optionalButtonMore = (
+		<button className="learn-more" href={website}>
+			Learn More
+		</button>
 	);
 	let optionalButtonMore = <button className="learn-more">Learn More</button>;
 
