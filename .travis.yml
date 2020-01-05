@@ -15,10 +15,9 @@ before_install:
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud auth activate-service-account --key-file service-account.json
-  - gcloud config set project charged-formula-262616
-  - gcloud config set compute/zone us-west1-b
   - gcloud auth configure-docker
   - gcloud version
+  - gcloud config list
 
 deploy:
   provider: script
