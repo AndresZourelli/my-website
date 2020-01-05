@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+./deploy_key
+./service-account.json
 # testing
 /coverage
 
