@@ -7,9 +7,9 @@
 
 ./deploy_key
 ./service-account.json
+./secrets.tar
 # testing
 /coverage
-
 # production
 /build
 
