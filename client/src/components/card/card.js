@@ -14,11 +14,6 @@ const Card = ({ website, title, github, description, learnmore, company_image })
 			View on <FontAwesomeIcon icon={faGithub} size="1x" />
 		</a>
 	);
-	let optionalButtonMore = (
-		<button className="learn-more" href={website}>
-			Learn More
-		</button>
-	);
 	let optionalButtonMore = <button className="learn-more">Learn More</button>;
 
 	let titleImage = <img src={company_image} alt="" />;
