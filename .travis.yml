@@ -14,6 +14,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project charged-formula-262616
   - gcloud config set compute/zone us-west1-b
+  - gcloud auth configure-docker
 
 deploy:
   provider: script
