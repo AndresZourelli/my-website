@@ -8,5 +8,5 @@ docker push gcr.io/charged-formula-262616/web-server
 
 
 
-gcloud beta compute --project "charged-formula-262616" ssh --zone "us-west1-b" "instance-1" \
+gcloud compute --project "charged-formula-262616" ssh --zone "us-west1-b" "instance-1" \
     --command="curl https://sdk.cloud.google.com > install.sh; bash install.sh --disable-prompts; gcloud config list; gcloud auth configure-docker;sudo docker ps; gcloud auth configure-docker; sudo docker pull gcr.io/charged-formula-262616/web-client; sudo docker pull gcr.io/charged-formula-262616/web-nginx; sudo docker pull gcr.io/charged-formula-262616/web-server; sudo docker run -d gcr.io/charged-formula-262616/web-client; sudo docker run -d gcr.io/charged-formula-262616/web-nginx; sudo docker run -d gcr.io/charged-formula-262616/web-server"
