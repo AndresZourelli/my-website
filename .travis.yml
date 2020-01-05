@@ -27,6 +27,7 @@ before_install:
   - eval "ssh-agent -s"
   - chmod 600 ./deploy_key
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - ls -l ~/.ssh
   - ssh-add ./deploy_key -v
   - ssh -i ./deploy_key travis-ci@104.196.226.118 pwd
 # deploy:
