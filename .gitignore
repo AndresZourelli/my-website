@@ -8,6 +8,7 @@
 ./deploy_key
 ./service-account.json
 ./secrets.tar
+./deploy_key_open
 # testing
 /coverage
 # production
