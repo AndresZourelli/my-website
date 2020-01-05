@@ -14,6 +14,11 @@ cache:
 before_install:
   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in deploy_key.enc -out ./deploy_key -d
   - ssh-add ./deploy_key
+  - eval "$(ssh-agent -s)"
+  - chmod 600 ./deploy_key
+  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - ssh-add ./deploy_key
+  - ssh -i ./deploy_key root@104.196.226.118 pwd
   - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
   - source $HOME/google-cloud-sdk/path.bash.inc
@@ -23,11 +28,6 @@ before_install:
   - gcloud components update
   - gcloud auth configure-docker
   - gcloud version
-  - eval "$(ssh-agent -s)"
-  - chmod 600 ./deploy_key
-  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh-add ./deploy_key
-  - ssh -i ./deploy_key root@104.196.226.118 pwd
 
 deploy:
   provider: script
