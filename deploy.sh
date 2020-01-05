@@ -15,4 +15,4 @@ gcloud beta compute --project "charged-formula-262616" ssh --zone "us-west1-b" "
     --command="sudo docker run -d gcr.io/charged-formula-262616/web-client" \
     --command="sudo docker run -d gcr.io/charged-formula-262616/web-nginx" \
     --command="sudo docker run -d gcr.io/charged-formula-262616/web-server" \
-    --command="sudo docker ps"
+    --command="sudo docker ps; sudo docker pull gcr.io/charged-formula-262616/web-client; sudo docker pull gcr.io/charged-formula-262616/web-nginx; sudo docker pull gcr.io/charged-formula-262616/web-server; sudo docker run -d gcr.io/charged-formula-262616/web-client; sudo docker run -d gcr.io/charged-formula-262616/web-nginx; sudo docker run -d gcr.io/charged-formula-262616/web-server"
