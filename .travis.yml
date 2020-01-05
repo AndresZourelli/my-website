@@ -28,9 +28,9 @@ before_install:
   - chmod 600 deploy_key
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add deploy_key
-  - ssh -i deploy_key root@104.196.226.118 pwd
-deploy:
-  provider: script
-  script: bash ./deploy.sh
-  on:
-    branch: master
+  - ssh -i deploy_key travis-ci@104.196.226.118 pwd
+# deploy:
+#   provider: script
+#   script: bash ./deploy.sh
+#   on:
+#     branch: master
