@@ -25,11 +25,11 @@ before_install:
   - gcloud auth configure-docker
   - gcloud version
   - eval $(ssh-agent -s)
-  - chmod 600 ./deploy_key_open
+  - chmod 600 deploy_key_open
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ls -l ~/.ssh
-  - ssh-add ./deploy_key_open -v
-  - ssh -i ./deploy_key_open travis-ci@104.196.226.118 pwd
+  - ssh-add deploy_key_open -v
+  - ssh -i deploy_key_open travis-ci@104.196.226.118 pwd
 # deploy:
 #   provider: script
 #   script: bash ./deploy.sh
