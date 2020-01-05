@@ -10,12 +10,12 @@ gcloud auth configure-docker
 
 gcloud beta compute --project "charged-formula-262616" ssh --zone "us-west1-b" "instance-1"
 
-docker pull gcr.io/charged-formula-262616/web-client
-docker pull gcr.io/charged-formula-262616/web-nginx
-docker pull gcr.io/charged-formula-262616/web-server
+echo "docker pull gcr.io/charged-formula-262616/web-client"
+echo "docker pull gcr.io/charged-formula-262616/web-nginx"
+echo "docker pull gcr.io/charged-formula-262616/web-server"
 
-docker run -d gcr.io/charged-formula-262616/web-client
-docker run -d gcr.io/charged-formula-262616/web-nginx
-docker run -d gcr.io/charged-formula-262616/web-server
+echo "docker run -d gcr.io/charged-formula-262616/web-client"
+echo "docker run -d gcr.io/charged-formula-262616/web-nginx"
+echo "docker run -d gcr.io/charged-formula-262616/web-server"
 
-docker ps
+echo "docker ps"
