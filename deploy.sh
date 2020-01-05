@@ -18,7 +18,7 @@ gcloud compute --project "charged-formula-262616" ssh --zone "us-west1-b" "insta
     --command="sudo docker pull gcr.io/charged-formula-262616/web-server"
 
 gcloud compute --project "charged-formula-262616" ssh --zone "us-west1-b" "instance-1" \
-    --command="sudo docker run -d gcr.io/charged-formula-262616/web-client"
+    --command="sudo docker run -d gcr.io/charged-formula-262616/web-client && sudo docker run -d gcr.io/charged-formula-262616/web-nginx"
 
 gcloud compute --project "charged-formula-262616" ssh --zone "us-west1-b" "instance-1" \
     --command="sudo docker run -d gcr.io/charged-formula-262616/web-nginx"
