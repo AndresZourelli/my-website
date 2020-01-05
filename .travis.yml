@@ -24,7 +24,7 @@ before_install:
   - gcloud components update
   - gcloud auth configure-docker
   - gcloud version
-  - eval "ssh-agent -s"
+  - eval $(ssh-agent -s)
   - chmod 600 ./deploy_key
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ls -l ~/.ssh
