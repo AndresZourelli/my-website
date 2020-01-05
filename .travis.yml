@@ -28,7 +28,7 @@ before_install:
   - chmod 600 deploy_key_open
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ls -l ~/.ssh
-  - ssh-add deploy_key_open -v
+  - ssh-add deploy_key_open
   - ssh -i deploy_key_open travis-ci@104.196.226.118 pwd
 # deploy:
 #   provider: script
