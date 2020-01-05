@@ -6,12 +6,14 @@ docker push gcr.io/charged-formula-262616/web-client
 docker push gcr.io/charged-formula-262616/web-nginx
 docker push gcr.io/charged-formula-262616/web-server
 
-gcloud docker -- pull gcr.io/charged-formula-262616/web-client
-gcloud docker -- pull gcr.io/charged-formula-262616/web-nginx
-gcloud docker -- pull gcr.io/charged-formula-262616/web-server
+gcloud auth configure-docker
 
-gcloud docker -- run -d gcr.io/charged-formula-262616/web-client
-gcloud docker -- run -d gcr.io/charged-formula-262616/web-nginx
-gcloud docker -- run -d gcr.io/charged-formula-262616/web-server
+docker pull gcr.io/charged-formula-262616/web-client
+docker pull gcr.io/charged-formula-262616/web-nginx
+docker pull gcr.io/charged-formula-262616/web-server
+
+docker run -d gcr.io/charged-formula-262616/web-client
+docker run -d gcr.io/charged-formula-262616/web-nginx
+docker run -d gcr.io/charged-formula-262616/web-server
 
 docker ps
