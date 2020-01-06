@@ -11,10 +11,10 @@ ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << 
 
  sudo docker ps
 
- sudo docker pull gcr.io/charged-formula-262616/web-client
- sleep 1
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
- sleep 1
+ 
+ sudo docker pull gcr.io/charged-formula-262616/web-client
+ 
  sudo docker pull gcr.io/charged-formula-262616/web-server
 
  sudo docker run --rm -d -p 3000:3000 gcr.io/charged-formula-262616/web-client
