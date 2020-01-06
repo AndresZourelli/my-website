@@ -19,7 +19,7 @@ ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << 
 
 source /home/travis-ci/google-cloud-sdk/path.bash.inc
 
-gcloud compute instances set-service-account INSTANCE --scopes=storage-rw
+gcloud compute instances set-service-account 6621010990308869636 --scopes=storage-rw
 
 gcloud auth configure-docker
 
