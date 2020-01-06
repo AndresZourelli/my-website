@@ -22,6 +22,7 @@ before_install:
   - gcloud config set project charged-formula-262616
   - gcloud config set compute/zone us-west1-b
   - gcloud components update
+  - gcloud components install docker-credential-gcr
   - gcloud auth configure-docker
   - gcloud version
   - eval $(ssh-agent -s)
