@@ -14,13 +14,15 @@ docker push gcr.io/charged-formula-262616/web-server
 
 #  sudo docker container stop $(docker container ls -aq)
 # echo "1 " | gcloud init 
+
 ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
 
 source /home/travis-ci/google-cloud-sdk/path.bash.inc
 
-curl https://compute.googleapis.com/compute/v1/projects/charged-formula-262616/zones/us-west1-b/instances -H "Authorization":"Bearer ya29.Iq8BuAcrFX34znFZs_e5NOdw4gCOtYH37tiLcfavKzJ-D8hhq6TsfHTEv-9fGlh4EQdj8zUji5_lJomhPn6Y8ejwwuGf_UeIvyMgGVFyTCyBZX04lNPMM_jemiMTorVy4kEC4Ew_OggDtcfKEpTnoSPDB-GUPp1S9yxEhZk-IijN81s1AH_6DltfSxha4mwU6ysWq4VxEjmzbno8AUa8Ab2IR7dXB7CcqKc-ZENFVPBXkw"
 
 gcloud auth configure-docker
+
+gcloud components install docker-credential-gcr
 
 sudo docker-credential-gcloud list
 
