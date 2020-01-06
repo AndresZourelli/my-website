@@ -26,6 +26,7 @@ before_install:
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add deploy_key_open
   - gcloud auth configure-docker
+
   # - sudo docker pull gcr.io/charged-formula-262616/web-client
   # - sudo docker pull gcr.io/charged-formula-262616/web-nginx
 
