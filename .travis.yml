@@ -19,6 +19,7 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud components update
+  - gcloud components install docker-credential-gcr
   - gcloud version
   - eval $(ssh-agent -s)
   - chmod 600 deploy_key_open
