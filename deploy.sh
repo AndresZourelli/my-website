@@ -13,11 +13,11 @@ docker push gcr.io/charged-formula-262616/web-server
 #  ./google-cloud-sdk/install.sh
 
 #  sudo docker container stop $(docker container ls -aq)
+# echo "1 " | gcloud init 
 ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
 
 source /home/travis-ci/google-cloud-sdk/path.bash.inc
 
-echo "1" | gcloud init 
 
 sudo docker-credential-gcloud list
 
