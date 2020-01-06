@@ -18,6 +18,7 @@ ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << 
 
 source /home/travis-ci/google-cloud-sdk/path.bash.inc
 
+gcloud auth configure-docker
 
 sudo docker-credential-gcloud list
 
