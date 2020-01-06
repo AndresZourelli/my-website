@@ -2,9 +2,9 @@
 # docker build -t gcr.io/charged-formula-262616/web-nginx:latest -t gcr.io/charged-formula-262616/web-nginx:$SHA -f ./nginx/Dockerfile ./nginx
 # docker build -t gcr.io/charged-formula-262616/web-server:latest -t gcr.io/charged-formula-262616/web-server:$SHA -f ./server/Dockerfile ./server
 
-docker push gcr.io/charged-formula-262616/web-client
-docker push gcr.io/charged-formula-262616/web-nginx
-docker push gcr.io/charged-formula-262616/web-server
+# docker push gcr.io/charged-formula-262616/web-client
+# docker push gcr.io/charged-formula-262616/web-nginx
+# docker push gcr.io/charged-formula-262616/web-server
 
 #  curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-274.0.1-linux-x86_64.tar.gz
 
