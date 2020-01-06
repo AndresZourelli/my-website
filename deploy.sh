@@ -10,9 +10,7 @@ docker push gcr.io/charged-formula-262616/web-server
 ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
 
 gcloud components install docker-credential-gcr
-gcloud version
- gcloud auth configure-docker
-gcloud version
+gcloud auth list
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
  
  sudo docker pull gcr.io/charged-formula-262616/web-client
