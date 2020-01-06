@@ -16,7 +16,7 @@ docker push gcr.io/charged-formula-262616/web-server
 ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
 source /home/travis-ci/google-cloud-sdk/completion.bash.inc
 source /home/travis-ci/google-cloud-sdk/path.bash.inc
-sudo ./google-cloud-sdk/install.sh
+
  gcloud components install docker-credential-gcr 
  docker-credential-gcr configure-docker
 
