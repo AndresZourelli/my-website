@@ -20,7 +20,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud components update
   - gcloud version
-  - gcloud compute ssh --quiet --project charged-formula-262616 --zone us-west1-b	 instance-1
+  # - gcloud compute ssh --quiet --project charged-formula-262616 --zone us-west1-b	 instance-1
   - docker pull gcr.io/charged-formula-262616/web-nginx
   # - eval $(ssh-agent -s)
   # - chmod 600 deploy_key_open
