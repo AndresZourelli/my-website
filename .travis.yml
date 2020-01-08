@@ -16,10 +16,8 @@ before_install:
   - gcloud components update
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud version
-  # - gcloud compute ssh --quiet --project charged-formula-262616 --zone us-west1-b	 instance-1
   - gcloud auth configure-docker
-  - ls
-  - docker run web-nginx
+  - gcloud compute ssh --quiet --project charged-formula-262616 --zone us-west1-b	 instance-1 --command="docker pull gcr.io/charged-formula-262616/web-nginx && docker pull gcr.io/charged-formula-262616/web-client"
   # - eval $(ssh-agent -s)
   # - chmod 600 deploy_key_open
   # - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
