@@ -21,10 +21,10 @@
 # gcloud components install docker-credential-gcr
 
 # sudo docker-credential-gcloud list
-ssh travis-ci@104.196.226.118 << EOF
+ssh -i ./deploy_key_open travis-ci@104.196.226.118 << EOF
 
  echo $USER
- 
+
  gcloud auth configure-docker
 
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
