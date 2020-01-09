@@ -1,30 +1,16 @@
-# docker build -t gcr.io/charged-formula-262616/web-client:latest -t gcr.io/charged-formula-262616/web-client:$SHA  -f ./client/Dockerfile ./client
-# docker build -t gcr.io/charged-formula-262616/web-nginx:latest -t gcr.io/charged-formula-262616/web-nginx:$SHA -f ./nginx/Dockerfile ./nginx
-# docker build -t gcr.io/charged-formula-262616/web-server:latest -t gcr.io/charged-formula-262616/web-server:$SHA -f ./server/Dockerfile ./server
+docker build -t gcr.io/charged-formula-262616/web-client:latest -t gcr.io/charged-formula-262616/web-client:$SHA  -f ./client/Dockerfile ./client
+docker build -t gcr.io/charged-formula-262616/web-nginx:latest -t gcr.io/charged-formula-262616/web-nginx:$SHA -f ./nginx/Dockerfile ./nginx
+docker build -t gcr.io/charged-formula-262616/web-server:latest -t gcr.io/charged-formula-262616/web-server:$SHA -f ./server/Dockerfile ./server
 
-# docker push gcr.io/charged-formula-262616/web-client
-# docker push gcr.io/charged-formula-262616/web-nginx
-# docker push gcr.io/charged-formula-262616/web-server
+docker push gcr.io/charged-formula-262616/web-client
+docker push gcr.io/charged-formula-262616/web-nginx
+docker push gcr.io/charged-formula-262616/web-server
 
-#  curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-274.0.1-linux-x86_64.tar.gz
-
-#  tar zxvf google-cloud-sdk-274.0.1-linux-x86_64.tar.gz google-cloud-sdk
-
-#  ./google-cloud-sdk/install.sh
-
-#  sudo docker container stop $(docker container ls -aq)
-# echo "1 " | gcloud init 
-
-# source /home/travis-ci/google-cloud-sdk/path.bash.inc
-
-# gcloud compute instances set-service-account 6621010990308869636 --scopes=storage-rw
-# gcloud components install docker-credential-gcr
-
-# sudo docker-credential-gcloud list
-
-ls
+scp docker-compose-prod.yml travis@104.196.226.118 .
 
 ssh -i ./deploy_key_open travis@104.196.226.118 << EOF
+
+ docker-compose up -f docker-compose-prod.yml
 
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
  

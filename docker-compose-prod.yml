@@ -2,9 +2,7 @@ version: "3"
 services:
   client:
     restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./client
+    image: gcr.io/charged-formula-262616/web-client
     ports:
       - 3000:3000
     volumes:
@@ -15,9 +13,7 @@ services:
       - api
 
   api:
-    build:
-      dockerfile: Dockerfile
-      context: ./server
+    image: gcr.io/charged-formula-262616/web-server
     restart: always
     depends_on:
       - postgres
@@ -54,9 +50,7 @@ services:
 
   nginx:
     restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx
+    image: gcr.io/charged-formula-262616/web-nginx
     ports:
       - "80:80"
       - "443:443"
@@ -75,4 +69,4 @@ services:
       - ./var/www/certbot/conf:/etc/letsencrypt
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --force-renew -d andreszourelli.me -d www.andreszourelli.me
+    command: certonly --dry-run --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --force-renew -d andreszourelli.me -d www.andreszourelli.me
