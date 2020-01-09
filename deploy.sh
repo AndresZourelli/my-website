@@ -21,7 +21,7 @@
 # gcloud components install docker-credential-gcr
 
 # sudo docker-credential-gcloud list
-ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
+ssh -o StrictHostKeyChecking=no travis-ci@104.196.226.118 << EOF
 
 
  gcloud auth configure-docker
