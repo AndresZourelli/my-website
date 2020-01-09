@@ -6,8 +6,9 @@
 # docker push gcr.io/charged-formula-262616/web-nginx
 # docker push gcr.io/charged-formula-262616/web-server
 
-
+echo ""
 scp ./docker-compose-prod.yml travis@104.196.226.118:~/
+echo ""
 ssh -i ./deploy_key_open travis@104.196.226.118 << EOF
 docker-compose up -f docker-compose-prod.yml
 EOF
