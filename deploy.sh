@@ -26,10 +26,6 @@ ls
 
 ssh -i ./deploy_key_open travis@104.196.226.118 << EOF
 
- echo $USER
-
- echo "y" | gcloud auth configure-docker
-
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
  
  sudo docker pull gcr.io/charged-formula-262616/web-client
