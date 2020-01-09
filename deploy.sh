@@ -1,4 +1,4 @@
-openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv in secrets.tar.enc -out secrets.tar -d
+openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in secrets.tar.enc -out secrets.tar -d
 
 tar xvf secrets.tar
 
