@@ -15,17 +15,17 @@
 #  sudo docker container stop $(docker container ls -aq)
 # echo "1 " | gcloud init 
 
-ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
+# source /home/travis-ci/google-cloud-sdk/path.bash.inc
 
-source /home/travis-ci/google-cloud-sdk/path.bash.inc
-
-gcloud compute instances set-service-account 6621010990308869636 --scopes=storage-rw
-
-gcloud auth configure-docker
-
+# gcloud compute instances set-service-account 6621010990308869636 --scopes=storage-rw
 gcloud components install docker-credential-gcr
 
 sudo docker-credential-gcloud list
+ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
+
+
+gcloud auth configure-docker
+
 
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
  
