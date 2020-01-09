@@ -24,8 +24,7 @@
 ssh -o StrictHostKeyChecking=no -i deploy_key_open travis-ci@104.196.226.118 << EOF
 
 
-gcloud auth configure-docker
-
+ gcloud auth configure-docker
 
  sudo docker pull gcr.io/charged-formula-262616/web-nginx
  
