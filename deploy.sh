@@ -21,6 +21,9 @@
 # gcloud components install docker-credential-gcr
 
 # sudo docker-credential-gcloud list
+
+ls
+
 ssh -i ./deploy_key_open travis-ci@104.196.226.118 << EOF
 
  echo $USER
