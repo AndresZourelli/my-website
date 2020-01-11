@@ -35,7 +35,7 @@ services:
       - POSTGRES_DB
       - POSTGRES_PASSWORD
     volumes:
-      - /var/lib/postgresql/data
+      - ./var/database_projects/data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
