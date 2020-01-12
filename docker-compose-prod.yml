@@ -21,19 +21,15 @@ services:
       - 5000:5000
     volumes:
       - /app
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_DB
-      - POSTGRES_PASSWORD
+    env_file:
+      - ./.env
 
   postgres:
     image: postgres
     ports:
       - "27017:5432"
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_DB
-      - POSTGRES_PASSWORD
+    env_file:
+      - ./.env
     volumes:
       - ./var/database_projects/data:/var/lib/postgresql/data
 
@@ -43,9 +39,8 @@ services:
       - postgres
     ports:
       - "5555:80"
-    environment:
-      - PGADMIN_DEFAULT_EMAIL
-      - PGADMIN_DEFAULT_PASSWORD
+    env_file:
+      - ./.env
     restart: unless-stopped
 
   nginx:
@@ -55,9 +50,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./var/www/certbot/data:/usr/share/nginx/html/letsencrypt
-      - ./var/www/certbot/conf:/etc/nginx/ssl
-      - ./var/www/certbot/conf/dhparam:/etc/nginx/dhparam
+      - web-root:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
     depends_on:
       - client
       - api
@@ -65,8 +62,9 @@ services:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - ./var/www/certbot/data:/usr/share/nginx/html/letsencrypt
-      - ./var/www/certbot/conf:/etc/letsencrypt
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
     depends_on:
       - nginx
-    command: certonly --dry-run --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --force-renew -d andreszourelli.me -d www.andreszourelli.me
+    command: certonly --dry-run --webroot --webroot-path=/var/www/html --email azourelli+mywebsite@gmail.com --agree-tos --no-eff-email --force-renew -d andreszourelli.me -d www.andreszourelli.me
