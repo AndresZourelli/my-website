@@ -14,7 +14,7 @@ scp ./docker-compose-prod.yml travis@104.196.226.118:~/
 
 
 ssh -i ./deploy_key_open travis@104.196.226.118 << EOF
-ls
+
 docker-compose -f docker-compose-prod.yml down
 docker-compose -f docker-compose-prod.yml up --build -d
 
