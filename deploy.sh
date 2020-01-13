@@ -15,12 +15,8 @@ scp ./docker-compose-prod.yml travis@104.196.226.118:~/
 
 ssh -i ./deploy_key_open travis@104.196.226.118 << EOF
 
-docker pull gcr.io/charged-formula-262616/web-client
-docker pull gcr.io/charged-formula-262616/web-nginx
-docker pull gcr.io/charged-formula-262616/web-server
-
-docker-compose -f docker-compose-prod.yml stop
-docker-compose -f docker-compose-prod.yml --build up -d
+docker-compose -f docker-compose-prod.yml down
+docker-compose -f docker-compose-prod.yml up --build --pull -d
 
 EOF
 
