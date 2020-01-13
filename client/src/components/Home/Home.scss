@@ -178,9 +178,7 @@ main {
 
 .footer {
 	bottom: 0;
-	left: 50%;
-	transform: translate(-50%, 0);
-	position: fixed;
+	width: 100%;
 	text-align: center;
 	color: rgba($tertiary-color, .8);
 	padding: 1rem;

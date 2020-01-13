@@ -3,9 +3,7 @@ import './Home.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Projects from '../Projects/Projects';
-import { config } from '@fortawesome/fontawesome-svg-core';
 
-config.autoAddCss = false;
 export class Home extends Component {
 	render() {
 		return (
