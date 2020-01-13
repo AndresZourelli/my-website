@@ -2,6 +2,9 @@ import React from 'react';
 import './card.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { config } from '@fortawesome/fontawesome-svg-core';
+
+config.autoAddCss = false;
 
 const Card = ({ website, title, github, description, learnmore, company_image }) => {
 	let optionalButtonLive = (
