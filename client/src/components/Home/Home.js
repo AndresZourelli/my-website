@@ -34,7 +34,6 @@ export class Home extends Component {
 						</a>
 					</div>
 				</main>
-				<h1>Added</h1>
 				<Projects />
 				<div className="footer">Andres Zourelli, 2019</div>
 			</div>
