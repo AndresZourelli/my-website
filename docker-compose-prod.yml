@@ -58,6 +58,7 @@ services:
     depends_on:
       - client
       - api
+
   certbot:
     image: certbot/certbot
     container_name: certbot
