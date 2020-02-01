@@ -4,7 +4,7 @@ import Row from '../Utilities/Row';
 import './CMS.scss';
 import AddRow from '../Utilities/addRow';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTimes, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 export default class CMS extends Component {
 	constructor(props) {
@@ -23,6 +23,7 @@ export default class CMS extends Component {
 			this.setState({ projects: data.data });
 		});
 		var list = this.state.projects.filter((task) => task.id !== id);
+		this.setState({ projects: list });
 	};
 	addproj = (proj) => {
 		this.setState({ isAdding: !this.state.isAdding });
@@ -79,20 +80,6 @@ export default class CMS extends Component {
 							) : (
 								<Fragment>
 									<AddRow add={this.addproj} change={this.changeEditState} />
-									<tr>
-										<td>
-											<span className="icons">
-												<FontAwesomeIcon icon={faSave} onClick={this.changeEditState} />
-											</span>
-											<span className="icons">
-												<FontAwesomeIcon
-													className="cancel"
-													icon={faTimes}
-													onClick={this.changeCancelEditState}
-												/>
-											</span>
-										</td>
-									</tr>
 								</Fragment>
 							)}
 						</tbody>
