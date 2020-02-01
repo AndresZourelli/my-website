@@ -51,7 +51,13 @@ export default class Row extends Component {
 			<tr>
 				{this.state.edit ? (
 					<td>
-						<input name="name" value={this.state.name} onChange={this.handleChange} type="text" />{' '}
+						<input
+							placeholder="Project Name"
+							name="name"
+							value={this.state.name}
+							onChange={this.handleChange}
+							type="text"
+						/>{' '}
 					</td>
 				) : (
 					<td>{this.state.name}</td>
@@ -59,6 +65,7 @@ export default class Row extends Component {
 				{this.state.edit ? (
 					<td>
 						<input
+							placeholder="Description"
 							name="description"
 							value={this.state.description}
 							onChange={this.handleChange}
@@ -71,6 +78,7 @@ export default class Row extends Component {
 				{this.state.edit ? (
 					<td>
 						<input
+							placeholder="Website Link"
 							name="website_link"
 							value={this.state.website_link}
 							onChange={this.handleChange}
@@ -84,6 +92,7 @@ export default class Row extends Component {
 					<Fragment>
 						<td>
 							<input
+								placeholder="Github Link"
 								name="github_link"
 								value={this.state.github_link}
 								onChange={this.handleChange}

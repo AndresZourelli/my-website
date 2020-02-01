@@ -40,15 +40,28 @@ export default class AddRow extends Component {
 		return (
 			<tr>
 				<td>
-					<input name="name" value={this.state.name} onChange={this.handleChange} type="text" />{' '}
-				</td>
-
-				<td>
-					<input name="description" value={this.state.description} onChange={this.handleChange} type="text" />
+					<input
+						name="name"
+						placeholder="Project Name"
+						value={this.state.name}
+						onChange={this.handleChange}
+						type="text"
+					/>{' '}
 				</td>
 
 				<td>
 					<input
+						placeholder="Description"
+						name="description"
+						value={this.state.description}
+						onChange={this.handleChange}
+						type="text"
+					/>
+				</td>
+
+				<td>
+					<input
+						placeholder="Website Link"
 						name="website_link"
 						value={this.state.website_link}
 						onChange={this.handleChange}
@@ -57,7 +70,13 @@ export default class AddRow extends Component {
 				</td>
 
 				<td>
-					<input name="github_link" value={this.state.github_link} onChange={this.handleChange} type="text" />
+					<input
+						placeholder="Github Link"
+						name="github_link"
+						value={this.state.github_link}
+						onChange={this.handleChange}
+						type="text"
+					/>
 				</td>
 				<td>
 					<span className="icons">
