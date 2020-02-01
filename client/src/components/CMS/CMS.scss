@@ -1,0 +1,38 @@
+.CMS {
+	height: 100%;
+}
+.projects_container {
+	padding: 10rem 5rem;
+	width: 100%;
+}
+.navlink {
+	font-size: 1.25rem;
+	margin: 2rem 0rem;
+	display: block;
+	&:hover {
+		color: #7289da;
+	}
+}
+th,
+td {
+	padding: .5rem .5rem;
+	width: 20%;
+	border: solid white 1px;
+}
+
+table {
+	width: 100%;
+	border: solid white 1px;
+	border-collapse: collapse;
+}
+
+.icons {
+	cursor: pointer;
+	padding: 0 .5rem;
+	.plus {
+		color: green;
+	}
+	.cancel {
+		color: red;
+	}
+}

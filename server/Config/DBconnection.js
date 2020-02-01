@@ -17,16 +17,18 @@ const initialize = () => {
 			}
 		}
 	);
+
 	pool.query(
-		'CREATE TABLE IF NOT EXISTS website_address(web_id SERIAL PRIMARY KEY, website_link VARCHAR, fk_web_id INTEGER, FOREIGN KEY (fk_web_id) REFERENCES projects (id))',
+		'CREATE TABLE IF NOT EXISTS website_address(web_id SERIAL PRIMARY KEY, website_link VARCHAR,  fk_web_id INTEGER, FOREIGN KEY (fk_web_id) REFERENCES projects (id) ON DELETE CASCADE)',
 		(err, res) => {
 			if (err) {
 				console.log(err);
 			}
 		}
 	);
+
 	pool.query(
-		'CREATE TABLE IF NOT EXISTS github_address(github_id SERIAL PRIMARY KEY, github_link VARCHAR, fk_github_id INTEGER, FOREIGN KEY (fk_github_id) REFERENCES projects (id))',
+		'CREATE TABLE IF NOT EXISTS github_address(github_id SERIAL PRIMARY KEY, github_link VARCHAR,  fk_github_id INTEGER, FOREIGN KEY (fk_github_id) REFERENCES projects (id) ON DELETE CASCADE)',
 		(err, res) => {
 			if (err) {
 				console.log(err);
@@ -51,17 +53,14 @@ const addProject = (request, response) => {
 					throw error;
 				}
 				id = results.rows[0].id;
-				console.log(results);
-				response.status(200).send(`Project added with ID: ${id}`);
 
 				pool.query(
-					'INSERT INTO github_address (github_link,fk_github_id) VALUES ($1,$2)',
+					'INSERT INTO github_address (github_link,fk_github_id) VALUES ($1,$2) ',
 					[ github, id ],
 					(error, result) => {
 						if (error) {
 							throw error;
 						}
-						//response.status(200).send(`Github address added with ID: ${results.insertId}`);
 					}
 				);
 
@@ -72,7 +71,6 @@ const addProject = (request, response) => {
 						if (error) {
 							throw error;
 						}
-						//response.status(200).send(`Website address added with ID: ${results.insertId}`);
 					}
 				);
 			}
@@ -87,6 +85,7 @@ const addProject = (request, response) => {
 					throw error;
 				}
 				id = results.rows[0].id;
+
 				pool.query(
 					'INSERT INTO website_address (website_link,fk_web_id) VALUES ($1,$2)',
 					[ website, id ],
@@ -118,6 +117,7 @@ const addProject = (request, response) => {
 						}
 					}
 				);
+
 				response.status(200).send(`Project added with ID: ${id}`);
 			}
 		);
@@ -150,8 +150,7 @@ const getProjects = (request, response) => {
 };
 
 const deleteProject = (request, response) => {
-	console.log(request);
-	const id = parseInt(request.params.id);
+	const { id } = request.body;
 
 	pool.query('DELETE FROM projects WHERE id=$1', [ id ], (error, results) => {
 		if (error) {
@@ -162,19 +161,12 @@ const deleteProject = (request, response) => {
 };
 
 const updateProject = (request, response) => {
-	const { id } = request.body;
+	const { id, name, description } = request.body;
 
 	if (request.body.name) {
-		pool.query('UPDATE projects SET name=$1 WHERE id=$2', [ request.body.name, id ], (error, result) => {
-			if (error) {
-				throw error;
-			}
-		});
-	}
-	if (request.body.description) {
 		pool.query(
-			'UPDATE projects SET description=$1 WHERE id=$2',
-			[ request.body.description, id ],
+			'UPDATE projects SET name=$1, description=$2  WHERE id=$3',
+			[ name, description, id ],
 			(error, result) => {
 				if (error) {
 					throw error;
@@ -184,7 +176,7 @@ const updateProject = (request, response) => {
 	}
 	if (request.body.website) {
 		pool.query(
-			'UPDATE website_address SET website_link=$1 WHERE fk_web_id=$2',
+			'INSERT INTO website_address (website_link,fk_web_id, web_id) VALUES ($1,$2,$2)  ON CONFLICT (web_id) DO UPDATE  SET website_link=EXCLUDED.website_link WHERE website_address.fk_web_id=$2',
 			[ request.body.website, id ],
 			(error, result) => {
 				if (error) {
@@ -195,7 +187,7 @@ const updateProject = (request, response) => {
 	}
 	if (request.body.github) {
 		pool.query(
-			'UPDATE github_address SET github_link=$1 WHERE fk_github_id=$2',
+			'INSERT INTO github_address (github_link,fk_github_id,github_id) VALUES ($1,$2,$2) ON CONFLICT (github_id) DO UPDATE SET github_link=$1 WHERE github_address.fk_github_id=$2',
 			[ request.body.github, id ],
 			(error, result) => {
 				if (error) {
@@ -204,5 +196,6 @@ const updateProject = (request, response) => {
 			}
 		);
 	}
+	response.status(200).send(`Project updated with ID: ${id}`);
 };
 module.exports = { pool, deleteProject, getProjects, addProject, updateProject, initialize };

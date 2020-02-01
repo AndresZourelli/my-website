@@ -1,0 +1,14 @@
+.row_row {
+	width: 5rem;
+	display: flex;
+	justify-content: center;
+}
+
+.row_icons {
+	margin: auto;
+	padding: 0 2rem;
+	cursor: pointer;
+	.fa-times {
+		color: red;
+	}
+}

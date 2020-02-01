@@ -26,9 +26,9 @@ app.get('/api/projects', db.getProjects);
 //create new project
 app.post('/api/projects', db.addProject);
 //update existing project
-app.put('/api/projects/:id', db.updateProject);
+app.post('/api/projects/update', db.updateProject);
 //delete project
-app.delete('/api/projects/:id', db.deleteProject);
+app.post('/api/projects/delete', db.deleteProject);
 
 app.get('/test', () => console.log('working'));
 // app.get('/', () => db.getProjects);
