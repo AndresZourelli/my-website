@@ -40,7 +40,7 @@ export default class AddRow extends Component {
 		return (
 			<tr>
 				<td>
-					<input
+					<textarea
 						name="name"
 						placeholder="Project Name"
 						value={this.state.name}
@@ -50,7 +50,7 @@ export default class AddRow extends Component {
 				</td>
 
 				<td>
-					<input
+					<textarea
 						placeholder="Description"
 						name="description"
 						value={this.state.description}
@@ -60,7 +60,7 @@ export default class AddRow extends Component {
 				</td>
 
 				<td>
-					<input
+					<textarea
 						placeholder="Website Link"
 						name="website_link"
 						value={this.state.website_link}
@@ -70,7 +70,7 @@ export default class AddRow extends Component {
 				</td>
 
 				<td>
-					<input
+					<textarea
 						placeholder="Github Link"
 						name="github_link"
 						value={this.state.github_link}

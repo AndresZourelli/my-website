@@ -51,7 +51,7 @@ export default class Row extends Component {
 			<tr>
 				{this.state.edit ? (
 					<td>
-						<input
+						<textarea
 							placeholder="Project Name"
 							name="name"
 							value={this.state.name}
@@ -64,7 +64,7 @@ export default class Row extends Component {
 				)}
 				{this.state.edit ? (
 					<td>
-						<input
+						<textarea
 							placeholder="Description"
 							name="description"
 							value={this.state.description}
@@ -77,7 +77,7 @@ export default class Row extends Component {
 				)}
 				{this.state.edit ? (
 					<td>
-						<input
+						<textarea
 							placeholder="Website Link"
 							name="website_link"
 							value={this.state.website_link}
@@ -91,7 +91,7 @@ export default class Row extends Component {
 				{this.state.edit ? (
 					<Fragment>
 						<td>
-							<input
+							<textarea
 								placeholder="Github Link"
 								name="github_link"
 								value={this.state.github_link}

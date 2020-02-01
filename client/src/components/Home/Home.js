@@ -26,10 +26,20 @@ export class Home extends Component {
 						from Oregon State University.
 					</h3>
 					<div className="icons">
-						<a href="/" className="id">
+						<a
+							href="https://www.linkedin.com/in/fabianzourelli/"
+							className="id"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							<FontAwesomeIcon icon={faLinkedin} size="2x" />
 						</a>
-						<a href="/" className="id">
+						<a
+							href="https://github.com/AndresZourelli"
+							className="id"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							<FontAwesomeIcon icon={faGithub} size="2x" />
 						</a>
 					</div>

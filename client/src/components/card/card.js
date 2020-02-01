@@ -8,12 +8,12 @@ config.autoAddCss = false;
 
 const Card = ({ website, title, github, description, learnmore, company_image }) => {
 	let optionalButtonLive = (
-		<a className="live" href={website}>
+		<a className="live" target="_blank" rel="noopener noreferrer" href={website}>
 			See it Live
 		</a>
 	);
 	let optionalButtonGithub = (
-		<a href={github}>
+		<a href={github} target="_blank" rel="noopener noreferrer">
 			View on <FontAwesomeIcon icon={faGithub} size="1x" />
 		</a>
 	);
