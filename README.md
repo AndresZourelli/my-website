@@ -1,10 +1,10 @@
-#Welcome to My Website
+# Welcome to My Website
 
 This website was created to display my current and completed programming projects. 
 
 ![Website Image](/images/website.png)
 
-##Technology Used
+## Technology Used
 
 The website was built using the following technologies:
 
