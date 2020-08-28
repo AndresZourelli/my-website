@@ -24,6 +24,7 @@ before_install:
   - chmod 600 deploy_key_open
   - echo -e "Host remote_server\n\tHost $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add deploy_key_open
+  - ssh-add remote_server
 deploy:
   skip_cleanup: true
   provider: script
