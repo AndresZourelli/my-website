@@ -12,11 +12,7 @@
 
 # scp ./docker-compose-prod.yml travis@104.196.226.118:~/
 
-cat deploy_key_open
-
-ssh-keygen -y -e -f deploy_key_open
-
-ssh -vvv -i deploy_key_open travis@104.196.226.118 << EOF
+ssh -vvv -i super_secret.txt travis@104.196.226.118 << EOF
 
 docker-compose -f docker-compose-prod.yml pull
 docker-compose -f docker-compose-prod.yml down

@@ -7,24 +7,15 @@ env:
     - SHA=$(git rev-parse HEAD)
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
     - SERVER_IP_ADDRESS=104.196.226.118
-
 before_install:
-  - openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv
-    -in secrets.tar.enc -out secrets.tar -d
+  - openssl aes-256-cbc -K $encrypted_355e94ba1091_key -iv $encrypted_355e94ba1091_iv
+    -in super_secret.txt.enc -out super_secret.txt -d
   - tar xvf secrets.tar
-  # - curl https://sdk.cloud.google.com | bash > /dev/null;
-  # - source $HOME/google-cloud-sdk/path.bash.inc
-  # - gcloud components update
-  # - gcloud auth activate-service-account --key-file service-account.json
-  # - gcloud version
-  # - gcloud auth configure-docker
-  # # - gcloud compute ssh --project charged-formula-262616 --zone us-west1-b	 instance-1 --command="gcloud auth list"
   - eval $(ssh-agent -s)
-  - sudo chmod 600 deploy_key_open
+  - sudo chmod 600 super_secret.txt
   - echo $?
-  - ls -la
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh-add deploy_key_open
+  - ssh-add super_secret.txt
   - ssh-add -l
 deploy:
   skip_cleanup: true
