@@ -25,6 +25,7 @@ before_install:
   - echo $?
   - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add deploy_key_open
+  - ssh-add -l
 deploy:
   skip_cleanup: true
   provider: script
