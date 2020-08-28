@@ -21,9 +21,9 @@ before_install:
   # # - gcloud compute ssh --project charged-formula-262616 --zone us-west1-b	 instance-1 --command="gcloud auth list"
   - eval $(ssh-agent -s)
   - ls
-  - chmod 600 ./deploy_key_open
+  - chmod 600 deploy_key_open
   - echo $?
-  # - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh-add deploy_key_open
   - ssh-add -l
 deploy:
