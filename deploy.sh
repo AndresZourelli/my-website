@@ -14,7 +14,7 @@
 cat ~/.ssh/config
 ls
 
-ssh -i deploy_key_open travis@104.196.226.118 << EOF
+ssh remote_server << EOF
 
 docker-compose -f docker-compose-prod.yml pull
 docker-compose -f docker-compose-prod.yml down
