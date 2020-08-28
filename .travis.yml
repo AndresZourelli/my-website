@@ -1,22 +1,21 @@
 sudo: required
 language: generic
 services:
-  - docker
+- docker
 env:
   global:
-    - SHA=$(git rev-parse HEAD)
-    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-    - SERVER_IP_ADDRESS=104.196.226.118
+  - SHA=$(git rev-parse HEAD)
+  - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - SERVER_IP_ADDRESS=104.196.226.118
 before_install:
-  - openssl aes-256-cbc -K $encrypted_355e94ba1091_key -iv $encrypted_355e94ba1091_iv
-    -in super_secret.txt.enc -out super_secret.txt -d
-  - tar xvf secrets.tar
-  - eval $(ssh-agent -s)
-  - sudo chmod 600 super_secret.txt
-  - echo $?
-  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh-add super_secret.txt
-  - ssh-add -l
+- openssl aes-256-cbc -K $encrypted_355e94ba1091_key -iv $encrypted_355e94ba1091_iv
+  -in super_secret.txt.enc -out super_secret.txt -d
+- eval $(ssh-agent -s)
+- sudo chmod 600 super_secret.txt
+- echo $?
+- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add super_secret.txt
+- ssh-add -l
 deploy:
   skip_cleanup: true
   provider: script
