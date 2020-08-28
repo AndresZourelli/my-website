@@ -11,10 +11,10 @@
 
 
 # scp ./docker-compose-prod.yml travis@104.196.226.118:~/
-cat ~/.ssh/config
-ls
 
-ssh remote_server << EOF
+cat deploy_key_open
+
+ssh -i deploy_key_open travis@104.196.226.118 << EOF
 
 docker-compose -f docker-compose-prod.yml pull
 docker-compose -f docker-compose-prod.yml down
