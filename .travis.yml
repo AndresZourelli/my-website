@@ -1,19 +1,27 @@
 sudo: required
 language: generic
 services:
-  - docker
+- docker
 env:
   global:
-    - SHA=$(git rev-parse HEAD)
-    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
-    - SERVER_IP_ADDRESS=104.196.226.118
+  - SHA=$(git rev-parse HEAD)
+  - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - SERVER_IP_ADDRESS=104.196.226.118
+  - secure: Kgk6uTMscBcyqmEriH5yQT1Kv+oblbwLkSkkTHuKvZtmbDEad1sOiZql9/JzEHDhoLpbAZXe0w0OlzlfXaM45vgCQ3DW1P9jrg1nEbEuJGqRNLppTqV5+VQVD6w5nL5gb4WXVyToFHBd7lqqtPPHbW0Mr/HXtplHXyFCT1pZC8z/T/xo8ZuLRgkd3robQeBEtx+b9pOUaMniSwCe6A0L6xAkBx/wZgtPBIvwKMvH7fvjz4JDcPZmFoSeJq1evTvNx48k9rbcjJ+YII10gcXx/02UauQT+k/0LnXrsSG2oktHuE3OF4TCpdUPR9YWTiKs7PZ7xu/AuGozE1Fcs/vAiGoW85i36bsQs5DYIaBErI/79OYQ+aX9fj7JuO5wvElZ/iROig0oOsxjwqSuSEszr877nn71/t8jbElFY8jbIu4OqlQFysUReK2duTTu2KKS8V+ldMaKZXPzecoYsCN2iVqZa17Q/z6+FxtBzqMs++J7eUONfvGT0LdzWK+LHd2rTcedJHtbVoZEw2igQcqvGBbVPCbmQ+zcV8SV1DEN9hC/ZXAou0J11VGa45OYvfucMMfJA7I1aqNcyss8VlZ/F9sD+fXPTOMRARZ1Me9JTYmkUwbylYvY2K9e5IFThQP2VwdnJVqzZIJHV9ieD7XeQwB7qDv373ZuMGW6QUfBROc=
 before_install:
-  - openssl aes-256-cbc -K $encrypted_355e94ba1091_key -iv $encrypted_355e94ba1091_iv
-    -in super_secret.txt.enc -out super_secret.txt -d
-  - eval $(ssh-agent -s)
-  - sudo chmod 600 super_secret.txt
-  - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - ssh-add super_secret.txt
+- openssl aes-256-cbc -K $encrypted_3b9f0b9d36d1_key -iv $encrypted_3b9f0b9d36d1_iv
+  -in secrets.tar.enc -out secrets.tar -d
+- tar xvf secrets.tar
+- curl https://sdk.cloud.google.com | bash > /dev/null;
+- source $HOME/google-cloud-sdk/path.bash.inc
+- gcloud components update
+- gcloud auth activate-service-account --key-file service-account.json
+- gcloud version
+- gcloud auth configure-docker
+- eval $(ssh-agent -s)
+- sudo chmod 600 super_secret.txt
+- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add super_secret.txt
 deploy:
   skip_cleanup: true
   provider: script
