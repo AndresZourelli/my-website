@@ -21,8 +21,12 @@ services:
       - 5000:5000
     volumes:
       - /app
-    env_file:
-      - ./.env
+    environment:
+      - POSTGRES_USER=unicorn_user
+      - POSTGRES_PASSWORD=magical_password
+      - POSTGRES_DB=rainbow_database
+    links:
+      - postgres
 
   postgres:
     image: postgres
@@ -34,6 +38,8 @@ services:
       - POSTGRES_DB=rainbow_database
     volumes:
       - ./var/database_projects/data:/var/lib/postgresql/data
+    links:
+      - api
 
   nginx:
     restart: always
