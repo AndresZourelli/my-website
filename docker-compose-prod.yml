@@ -33,16 +33,6 @@ services:
     volumes:
       - ./var/database_projects/data:/var/lib/postgresql/data
 
-  pgadmin:
-    image: dpage/pgadmin4
-    depends_on:
-      - postgres
-    ports:
-      - "5555:5555"
-    env_file:
-      - ./.env
-    restart: unless-stopped
-
   nginx:
     restart: always
     image: gcr.io/charged-formula-262616/web-nginx
