@@ -29,7 +29,8 @@ export default class CMS extends Component {
 		this.setState({ isAdding: !this.state.isAdding });
 		var list = this.state.projects;
 		var size = this.state.projects.length;
-		proj['id'] = this.state.projects[size - 1].id + 1;
+		console.log(proj, this.state.projects);
+		proj['id'] = this.state.projects.length > 0 ? this.state.projects[size - 1].id + 1 : 1;
 		list.push(proj);
 	};
 

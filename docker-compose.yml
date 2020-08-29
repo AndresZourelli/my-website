@@ -14,6 +14,9 @@ services:
       - api
     links:
       - api
+    stdin_open: true
+    environment:
+      - "DANGEROUSLY_DISABLE_HOST_CHECK=true"
 
   api:
     build:
@@ -33,7 +36,7 @@ services:
   postgres:
     image: postgres
     ports:
-      - "27017:5432"
+      - "5432:5432"
     volumes:
       - /var/lib/postgresql/data
     env_file:
@@ -44,10 +47,11 @@ services:
     depends_on:
       - postgres
     ports:
-      - "5555:80"
+      - "5555:5050"
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 5050
     restart: unless-stopped
 
   nginx:
