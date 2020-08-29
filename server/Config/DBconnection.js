@@ -7,7 +7,12 @@ const pool = new Pool({
 	password: process.env.POSTGRES_PASSWORD,
 	port: 5432
 });
-console.log(pool);
+
+pool.connect((err, client, release) => {
+	if (err) {
+		return console.error('Error acquiring client', err.stack);
+	}
+});
 
 const initialize = () => {
 	pool.query(
