@@ -7,6 +7,7 @@ const pool = new Pool({
 	password: process.env.POSTGRES_PASSWORD,
 	port: 5432
 });
+console.log(pool);
 
 const initialize = () => {
 	pool.query(
