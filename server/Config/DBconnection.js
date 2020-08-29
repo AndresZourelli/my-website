@@ -44,6 +44,7 @@ const initialize = () => {
 };
 
 const addProject = (request, response) => {
+	console.log(request.body);
 	const { name, description } = request.body;
 	let github, website;
 	let id;
