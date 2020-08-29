@@ -12,6 +12,17 @@ pool.connect((err, client, release) => {
 	if (err) {
 		return console.error('Error acquiring client', err.stack);
 	}
+	client.query(
+		'SELECT * FROM pg_catalog.pg_tables WHERE schemaname != "pg_catalog" AND "schemaname" != "information_schema"'
+	),
+		(err, res) => {
+			(err, res) => {
+				if (err) {
+					console.log(err);
+				}
+				console.log(res.rows);
+			};
+		};
 });
 
 const initialize = () => {
