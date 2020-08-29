@@ -38,8 +38,6 @@ services:
       - POSTGRES_DB=rainbow_database
     volumes:
       - ./var/database_projects/data:/var/lib/postgresql/data
-    links:
-      - api
 
   nginx:
     restart: always
