@@ -15,7 +15,6 @@ before_install:
 - echo $?
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add super_secret.txt
-- ssh-add -l
 deploy:
   skip_cleanup: true
   provider: script
