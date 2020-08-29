@@ -28,8 +28,10 @@ services:
     image: postgres
     ports:
       - "27017:5432"
-    env_file:
-      - ./.env
+    environment:
+      - POSTGRES_USER=unicorn_user
+      - POSTGRES_PASSWORD=magical_password
+      - POSTGRES_DB=rainbow_database
     volumes:
       - ./var/database_projects/data:/var/lib/postgresql/data
 

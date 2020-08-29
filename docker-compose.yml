@@ -39,8 +39,10 @@ services:
       - "5432:5432"
     volumes:
       - /var/lib/postgresql/data
-    env_file:
-      - ./server/.env
+    environment:
+      - POSTGRES_USER=unicorn_user
+      - POSTGRES_PASSWORD=magical_password
+      - POSTGRES_DB=rainbow_database
 
   nginx:
     restart: always
