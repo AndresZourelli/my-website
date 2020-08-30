@@ -36,13 +36,12 @@ services:
   postgres:
     image: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - /var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=unicorn_user
-      - POSTGRES_PASSWORD=magical_password
-      - POSTGRES_DB=rainbow_database
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+    env_file:
+      - ./server/.env
 
   nginx:
     restart: always

@@ -21,10 +21,8 @@ services:
       - 5000:5000
     volumes:
       - /app
-    environment:
-      - POSTGRES_USER=unicorn_user
-      - POSTGRES_PASSWORD=magical_password
-      - POSTGRES_DB=rainbow_database
+    env_file:
+      - ./server/.env
     links:
       - postgres
 
@@ -32,12 +30,11 @@ services:
     image: postgres
     ports:
       - "27017:5432"
-    environment:
-      - POSTGRES_USER=unicorn_user
-      - POSTGRES_PASSWORD=magical_password
-      - POSTGRES_DB=rainbow_database
+    env_file:
+      - ./server/.env
     volumes:
       - ./var/database_projects/data:/var/lib/postgresql/data
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf
 
   nginx:
     restart: always
