@@ -53,6 +53,10 @@ services:
       - api
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
 
+    product-tracker:
+      restart: always
+      image: gcr.io/charged-formula-262616/product-tracker
+
   certbot:
     image: certbot/certbot
     container_name: certbot
